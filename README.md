@@ -14,12 +14,12 @@
 ## Database:
 
 ```text
-    Legends:                                                                                 
-   ───────────────                                                                           
-    # Primary Key                                                                            
-    @ Foreign Key                                                                            
-    ? Nullable                                                                               
-                                                                                             
+    Legends:
+   ───────────────
+    # Primary Key
+    @ Foreign Key
+    ? Nullable
+
 ┌───────────────────────┐          ┌─────────────────────┐          ┌───────────────────────┐
 │         User          │          │       Account       │          │      Transaction      │
 ├────────────────┬──────┤1         ├─────────────┬───────┤1         ├───────────────┬───────┤
@@ -29,28 +29,28 @@
 │  email         │string│     └────┤@ owner_id   │int    │      ├───┤@ from_account │int?   │
 │  password_hash │string│          │  created_at │date   │      └───┤@ to_account   │int?   │
 │  created_at    │date  │          └─────────────┴───────┘          └───────────────┴───────┘
-│  updated_at    │date  │                                                                    
-└────────────────┴──────┘                                                                    
+│  updated_at    │date  │
+└────────────────┴──────┘
 ```
 
 ## Structure:
 
 ```text
-                ┌─────────────────────┐                                       
-                │ Presentation Layer  │◄────Display the UI, and recieve       
-                └─────────────┬───────┘          input from user              
-                        ▲     │                                               
- Return the result of   │     │  Request an operation with                    
-   the specified op     │     │        necessary infos                        
-                        │     ▼                                               
-                ┌───────┴─────────────┐                                       
-                │    Business Layer   │◄────Process the request and           
-                └─────────────┬───────┘        validate the input             
-                        ▲     │                                               
-Return the requested    │     │  Request an operation to modify,              
-         infos          │     │     or read the repository                    
-                        │     ▼                                               
-                ┌───────┴─────────────┐                                       
+                ┌─────────────────────┐
+                │ Presentation Layer  │◄────Display the UI, and recieve
+                └─────────────┬───────┘          input from user
+                        ▲     │
+ Return the result of   │     │  Request an operation with
+   the specified op     │     │        necessary infos
+                        │     ▼
+                ┌───────┴─────────────┐
+                │    Business Layer   │◄────Process the request and
+                └─────────────┬───────┘        validate the input
+                        ▲     │
+Return the requested    │     │  Request an operation to modify,
+         infos          │     │     or read the repository
+                        │     ▼
+                ┌───────┴─────────────┐
                 │      Data Layer     │◄────Connect to repo (DB, In-Memory...)
-                └─────────────────────┘              and fetch or modify      
+                └─────────────────────┘              and fetch or modify
 ```
